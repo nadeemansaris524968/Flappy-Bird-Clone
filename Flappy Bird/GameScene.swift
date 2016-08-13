@@ -15,6 +15,16 @@ class GameScene: SKScene {
     var bg = SKSpriteNode()
     
     override func didMoveToView(view: SKView) {
+        
+        let bgTexture = SKTexture(imageNamed: "bg.png")
+        
+        bg = SKSpriteNode(texture: bgTexture)
+        
+        bg.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        
+        bg.size.height = self.frame.height
+        
+        self.addChild(bg)
 
         let birdTexture = SKTexture(imageNamed: "flappy1.png")
         let birdTexture2 = SKTexture(imageNamed: "flappy2.png")
@@ -30,16 +40,7 @@ class GameScene: SKScene {
         bird.runAction(makeBirdFlap)
         
         self.addChild(bird)
-        
-        let bgTexture = SKTexture(imageNamed: "bg.png")
-        
-        
-        
-        
-        
-        
-        
-        
+    
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
