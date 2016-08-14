@@ -146,6 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pipe2.physicsBody?.collisionBitMask = ColliderType.Object.rawValue
         
         self.addChild(pipe2)
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
