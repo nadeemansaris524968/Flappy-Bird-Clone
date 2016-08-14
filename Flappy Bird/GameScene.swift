@@ -12,6 +12,7 @@ class GameScene: SKScene {
     
     var bird = SKSpriteNode()
     
+    
     var bg = SKSpriteNode()
     
     override func didMoveToView(view: SKView) {
@@ -51,12 +52,29 @@ class GameScene: SKScene {
         
         bird.runAction(makeBirdFlap)
         
+        bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture.size().height/2)
+        
+        bird.physicsBody!.dynamic = true
+        
         self.addChild(bird)
-    
+        
+        var ground = SKNode()
+        
+        ground.position = CGPoint(x: 0, y: 0)
+        
+        ground.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, 1))
+        
+        ground.physicsBody!.dynamic = false
+        
+        self.addChild(ground)
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+        
+        bird.physicsBody?.velocity = CGVectorMake(0, 20)
+        
+        bird.physicsBody?.applyImpulse(CGVectorMake(0, 50))
         
     }
    
